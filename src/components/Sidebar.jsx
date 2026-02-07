@@ -31,21 +31,32 @@ const Sidebar = () => {
       <div className="sidebar-header">
         <img src={fotoPerfil} alt="Nahuel Rolón" className="profile-img" />
         <h2 className="profile-name">Nahuel Rolón</h2>
-        <p className="profile-role">{texts.role}</p>
+        
+        {/* ANIMACIÓN 3D: El Rol cambia al girar */}
+        <div key={`role-${language}`} className="flip-animate">
+            <p className="profile-role">{texts.role}</p>
+        </div>
       </div>
 
       <nav className="sidebar-nav">
-        <a href="#sobre-mi">{texts.menu.about}</a>
-        <a href="#proyectos">{texts.menu.projects}</a>
-        <a href="#contacto">{texts.menu.contact}</a>
+        {/* ANIMACIÓN 3D: Cada link gira individualmente */}
+        <a href="#sobre-mi" key={`about-${language}`} className="flip-animate">
+            {texts.menu.about}
+        </a>
+        <a href="#proyectos" key={`proj-${language}`} className="flip-animate">
+            {texts.menu.projects}
+        </a>
+        <a href="#contacto" key={`contact-${language}`} className="flip-animate">
+            {texts.menu.contact}
+        </a>
       </nav>
 
       {/* --- ZONA DE CONTROLES (Lado a Lado) --- */}
       <div style={{ 
         marginTop: 'auto', 
         display: 'flex', 
-        flexDirection: 'row', // <--- ESTO LOS PONE AL LADO
-        gap: '1.5rem',        // Espacio entre los dos botones
+        flexDirection: 'row',
+        gap: '1.5rem',
         alignItems: 'center',
         justifyContent: 'center'
       }}>
@@ -54,7 +65,7 @@ const Sidebar = () => {
         <div 
           className={`theme-switch-container ${darkMode ? 'dark' : 'light'}`} 
           onClick={toggleTheme}
-          title={texts.theme[darkMode ? 'dark' : 'light']} // Tooltip al pasar el mouse
+          title={texts.theme[darkMode ? 'dark' : 'light']}
         >
           <div className="theme-switch-slider">
              <svg className="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
@@ -62,17 +73,14 @@ const Sidebar = () => {
           </div>
         </div>
 
-        {/* 2. SWITCH IDIOMA (ES/EN) - Estilo idéntico */}
-        {/* Usamos una clase 'active' si es inglés para mover la perilla */}
+        {/* 2. SWITCH IDIOMA (ES/EN) */}
         <div 
           className={`theme-switch-container ${language === 'en' ? 'dark' : 'light'}`} 
           onClick={toggleLanguage}
           title="Cambiar idioma / Change language"
         >
           <div className="theme-switch-slider">
-             {/* Texto ES (Visible cuando NO es inglés) */}
              <span className="lang-text es-text">ES</span>
-             {/* Texto EN (Visible cuando SÍ es inglés) */}
              <span className="lang-text en-text">EN</span>
           </div>
         </div>
