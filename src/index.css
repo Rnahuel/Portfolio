@@ -334,3 +334,70 @@ body.dark-mode .project-card:hover {
 .theme-switch-container.dark .moon-icon {
   opacity: 1; /* Visible en modo oscuro */
 }
+
+/* --- ESTILOS ESPECÍFICOS PARA EL SWITCH DE IDIOMA --- */
+
+/* Estilo base del texto (ES / EN) */
+.lang-text {
+  position: absolute;
+  font-size: 10px;       /* Tamaño pequeño para que entre en el círculo */
+      /* Bien negrita para que se lea bien */
+  color: var(--text-main); /* Usa el color del tema */
+  transition: opacity 0.3s ease;
+  user-select: none;     /* Evita que se seleccione el texto al hacer clic */
+}
+
+/* LÓGICA DE VISIBILIDAD (Igual que el Sol/Luna) */
+
+/* 1. Texto ES (Español) */
+.es-text {
+  opacity: 1; /* Visible por defecto (estado 'light'/izq) */
+}
+
+/* Cuando el contenedor tiene la clase 'dark' (que usamos para 'en'), ocultar ES */
+.theme-switch-container.dark .es-text {
+  opacity: 0;
+}
+
+/* 2. Texto EN (Inglés) */
+.en-text {
+  opacity: 0; /* Oculto por defecto */
+}
+
+/* Cuando el contenedor tiene la clase 'dark' (inglés), mostrar EN */
+.theme-switch-container.dark .en-text {
+  opacity: 1;
+}
+
+
+
+/* src/index.css */
+
+.lang-text {
+  position: absolute;
+  font-size: 10px;
+  font-weight: 900;
+  
+  /* ANTES TENÍAS ESTO:
+  color: var(--text-main); 
+  */
+  
+  /* CAMBIALO POR ESTO (Un color oscuro fijo): */
+  color: #333; /* O usá #2F3E46 si querés el mismo tono del diseño original */
+  
+  transition: opacity 0.3s ease;
+  user-select: none;
+}
+
+
+/* Buscá .theme-icon en tu CSS y asegurate que el color sea fijo también */
+.theme-icon {
+  width: 16px;
+  height: 16px;
+  
+  /* color: var(--text-main); <--- BORRAR ESTO */
+  color: #333; /* <--- PONER COLOR FIJO OSCURO */
+  
+  position: absolute;
+  transition: opacity 0.3s ease;
+}

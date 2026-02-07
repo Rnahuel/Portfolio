@@ -1,26 +1,35 @@
+// src/components/Projects.jsx
 import React from 'react';
-import { projectsDB } from '../backend/db'; // Importamos los datos
+import { projectsDB } from '../backend/db';
+import { useLanguage } from '../context/LanguageContext'; // <--- IMPORTAR ESTO
 
 const Projects = () => {
+  const { language, texts } = useLanguage(); // <--- TRAER EL IDIOMA ACTUAL ('es' o 'en')
   
-  // Filtramos los datos
   const laborales = projectsDB.filter(p => p.category === 'laboral');
   const personales = projectsDB.filter(p => p.category === 'personal');
+
+  // Traducimos los títulos de las secciones usando el diccionario del contexto
+  // (O podés hardcodearlos así: language === 'es' ? 'Exp. Laboral' : 'Work Exp.')
+  const titleLaboral = language === 'es' ? 'Experiencia Laboral' : 'Work Experience';
+  const titlePersonal = language === 'es' ? 'Proyectos Personales' : 'Personal Projects';
 
   return (
     <div className="projects-container">
 
       {/* --- COLUMNA LABORAL --- */}
       <div className="projects-column">
-        <h3 className="category-title">Experiencia Laboral</h3>
+        <h3 className="category-title">{titleLaboral}</h3>
         {laborales.map((project) => (
           <div key={project.id} className="project-card">
-            <h4>{project.title}</h4>
-            <p>{project.description}</p>
             
-            {/* Esta parte está oculta y aparece sola con CSS al pasar el mouse */}
+            {/* AQUÍ ESTABA EL ERROR: Antes era {project.title}, ahora es: */}
+            <h4>{project.title[language]}</h4>
+            
+            <p>{project.description[language]}</p>
+            
             <div className="card-stack">
-              <p>{project.details}</p>
+              <p>{project.details[language]}</p>
               <div className="stack-highlight">Stack: {project.techStack}</div>
             </div>
           </div>
@@ -29,14 +38,15 @@ const Projects = () => {
 
       {/* --- COLUMNA PERSONAL --- */}
       <div className="projects-column">
-        <h3 className="category-title">Proyectos Personales</h3>
+        <h3 className="category-title">{titlePersonal}</h3>
         {personales.map((project) => (
           <div key={project.id} className="project-card">
-            <h4>{project.title}</h4>
-            <p>{project.description}</p>
+            
+            <h4>{project.title[language]}</h4>
+            <p>{project.description[language]}</p>
             
             <div className="card-stack">
-              <p>{project.details}</p>
+              <p>{project.details[language]}</p>
               <div className="stack-highlight">Stack: {project.techStack}</div>
             </div>
           </div>

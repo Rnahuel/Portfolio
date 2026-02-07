@@ -1,34 +1,55 @@
+// src/backend/db.js
 export const projectsDB = [
   {
     id: 1,
     category: 'laboral',
-    title: "Dashboard RRHH (ONU)",
-    description: "Sistema integral de gestión de nóminas para organismos internacionales.",
-    details: "Lideré la implementación de módulos críticos reduciendo errores manuales en un 40%.",
-    techStack: "PeopleCode, Oracle SQL, XML Publisher"
+    // FIJATE QUE AHORA SON OBJETOS CON "es" Y "en"
+    title: { 
+      es: "Dashboard RRHH (ONU)", 
+      en: "HR Dashboard (UN)" 
+    },
+    description: { 
+      es: "Sistema integral de gestión de nóminas...", 
+      en: "Comprehensive payroll management system..." 
+    },
+    details: {
+      es: "Lideré la implementación de módulos...",
+      en: "Led the implementation of critical modules..."
+    },
+    techStack: "PeopleCode, Oracle SQL, XML Publisher" // Este lo dejamos igual porque los nombres técnicos no se traducen
   },
   {
     id: 2,
     category: 'laboral',
-    title: "Portal Corporativo",
-    description: "Optimización de consultas SQL y UX para clientes de gran escala.",
-    details: "Refactorización de legacy code mejorando la velocidad de carga en un 60%.",
+    title: { 
+      es: "Portal Corporativo", 
+      en: "Corporate Portal" 
+    },
+    description: { 
+      es: "Optimización de consultas SQL y UX...", 
+      en: "SQL query optimization and UX..." 
+    },
+    details: {
+      es: "Refactorización de legacy code...",
+      en: "Legacy code refactoring..."
+    },
     techStack: "Java, HTML5, JavaScript, Oracle"
   },
+  // ... asegurate de hacer lo mismo con los proyectos personales ...
   {
     id: 3,
     category: 'personal',
-    title: "HR Management System",
-    description: "App Full Stack moderna para gestión de legajos y vacaciones.",
-    details: "Sistema completo con autenticación JWT, manejo de sesiones y base de datos NoSQL.",
+    title: { es: "HR Management System", en: "HR Management System" },
+    description: { es: "App Full Stack moderna...", en: "Modern Full Stack App..." },
+    details: { es: "Sistema con autenticación JWT...", en: "System with JWT auth..." },
     techStack: "MongoDB, Express, React, Node.js (MERN)"
   },
   {
     id: 4,
     category: 'personal',
-    title: "Portfolio Web",
-    description: "Diseño minimalista y responsive single-page application.",
-    details: "Desarrollado con arquitectura de componentes reutilizables y animaciones CSS.",
+    title: { es: "Portfolio Web", en: "Web Portfolio" },
+    description: { es: "Diseño minimalista...", en: "Minimalist design..." },
+    details: { es: "Desarrollado con componentes...", en: "Developed with components..." },
     techStack: "React, Vite, CSS3, Flexbox"
   }
 ];
