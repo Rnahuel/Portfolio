@@ -196,3 +196,31 @@ body:not(.dark-mode) .project-card:hover {
   transform-style: preserve-3d; /* Para que se vea 3D */
   perspective: 1000px; /* Profundidad visual */
 }
+
+.marquee-wrapper {
+  height: 650px;
+  width: 100%;
+  position: relative;
+  mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 15px 0;
+}
+
+.marquee-track::-webkit-scrollbar {
+  display: none;
+}
+
+.marquee-track .project-card {
+  flex-shrink: 0;
+  margin: 0 auto;
+}
