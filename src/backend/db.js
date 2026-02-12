@@ -89,7 +89,7 @@ export const projectsDB = [
     category: 'personal',
     title: { es: "Tipear (Juego)", en: "Tipear (Game)" },
     description: { es: "Juego de mecanografía interactivo.", en: "Interactive typing game." },
-    details: { es: "🎮 Haz click para jugar la versión flash de lo que supo ser un gran proyecto de práctica.", en: "🎮 Click to play the flash version of what was a great practice project." },
+    details: { es: "🎮 Haz click para jugar la versión flash de lo que supo ser un gran juego y proyecto universitario.", en: "🎮 Click to play the flash version of what was a great game and university project." },
     techStack: "React, NodeJS",
     isPlayable: true,
     route: "/jugar"
