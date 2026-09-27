@@ -45,7 +45,7 @@ export const projectsDB = [
       en: "Advanced technical support for PeopleSoft 9.2 and Tools 8.60." 
     },
     details: {
-      es: "Gestión de incidencias en módulos HCM, SACR y FSCM utilizando Service Now y Phire para control de cambios.",
+      es: "Gestión de incidencias en HCM, SACR y FSCM módulos utilizando Service Now y Phire para control de cambios.",
       en: "Incident management in HCM, SACR, and FSCM modules using Service Now and Phire for change control."
     },
     techStack: "PeopleTools 8.60, Service Now, Phire, HCM, SACR, FSCM"
@@ -94,7 +94,7 @@ export const projectsDB = [
     isPlayable: true,
     route: "/jugar"
   },
-{
+  {
     id: 7,
     category: 'personal',
     title: { es: "Aca van futuros proyectos xd", en: "Tipear (Game)" },
@@ -114,5 +114,14 @@ export const projectsDB = [
     isPlayable: false,
     route: ""
   },
-
+  {
+    id: 9,
+    category: 'personal',
+    title: { es: "Punto (Juego)", en: "Punto (Game)" },
+    description: { es: "Juego hecho en Unity publicado en itch.io.", en: "Unity-made game published on itch.io." },
+    details: { es: "Juego disponible en itch.io. Haz click para abrir en una nueva pestaña.", en: "Game available on itch.io. Click to open in a new tab." },
+    techStack: "Unity, itch.io",
+    isPlayable: false,
+    route: "https://soycinereus.itch.io/punto"
+  },
 ];
