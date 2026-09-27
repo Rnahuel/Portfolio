@@ -37,6 +37,22 @@ const MarqueeColumn = ({ title, projects, language, navigate }) => {
     return () => cancelAnimationFrame(animationFrameId);
   }, [isHovered]);
 
+  const handleClick = (project) => {
+    // Si es URL externa, abrirla en nueva pestaña
+    if (project.route && typeof project.route === 'string' && project.route.startsWith('http')) {
+      window.open(project.route, '_blank', 'noopener,noreferrer');
+    } 
+    // Si es playable (ruta interna), navegar dentro de la app
+    else if (project.isPlayable && project.route) {
+      navigate(project.route);
+    }
+  };
+
+  const isClickable = (project) => {
+    return project.isPlayable || 
+           (project.route && typeof project.route === 'string' && project.route.startsWith('http'));
+  };
+
   return (
     <div className="projects-column">
       <h3 className="category-title flip-animate">
@@ -53,8 +69,8 @@ const MarqueeColumn = ({ title, projects, language, navigate }) => {
             <div 
               key={`${project.id}-${index}`} 
               className="project-card"
-              onClick={() => project.isPlayable && navigate(project.route)}
-              style={project.isPlayable ? { cursor: 'pointer' } : {}}
+              onClick={() => handleClick(project)}
+              style={isClickable(project) ? { cursor: 'pointer' } : {}}
             >
               <h4 className="flip-animate">
                 {project.title[language]}
